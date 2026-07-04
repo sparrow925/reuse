@@ -1,0 +1,476 @@
+<!DOCTYPE html><html lang="en" class="js" style=""><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nothing Here is New</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&amp;family=Work%20Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  :root{
+    --primary:#3a7d5c;
+    --secondary:#e06b3a;
+    --accent:#f5c842;
+    --bg:#fffdf5;
+    --text:#1a2e1f;
+  }
+  html,body{margin:0;padding:0;overflow-x:hidden;max-width:100%}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Work Sans',sans-serif;
+    font-size:18px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{font-family:'Fraunces',serif;margin:0;line-height:1.05;letter-spacing:-0.02em}
+  p{margin:0}
+  a{color:inherit}
+  img{max-width:100%;display:block}
+  .container{max-width:1240px;margin-inline:auto;padding-inline:clamp(20px,5vw,64px)}
+  .eyebrow{
+    font-family:'Work Sans',sans-serif;
+    font-size:11px;font-weight:600;
+    text-transform:uppercase;letter-spacing:0.22em;
+    color:var(--secondary);
+  }
+  .btn{
+    display:inline-block;
+    background:var(--accent);
+    color:var(--text);
+    font-family:'Work Sans',sans-serif;
+    font-weight:600;font-size:16px;
+    padding:16px 30px;
+    border-radius:2px;
+    text-decoration:none;
+    letter-spacing:0.01em;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .btn:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(31,36,25,.22)}
+  .txtlink{
+    font-family:'Work Sans',sans-serif;font-weight:500;font-size:15px;
+    text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:2px;
+    transition:opacity .2s;
+  }
+  .txtlink:hover{opacity:.6}
+
+  /* NAV */
+  header.nav{position:sticky;top:0;z-index:50;background:rgba(255,253,245,.94);backdrop-filter:blur(8px);border-bottom:1px solid rgba(26,46,31,.1)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .wordmark{font-family:'Fraunces',serif;font-weight:900;font-size:23px;color:var(--text);text-decoration:none;letter-spacing:-0.02em}
+  .nav-links{display:flex;gap:30px;align-items:center}
+  .nav-links a{font-family:'Work Sans',sans-serif;font-size:14px;font-weight:500;text-decoration:none;color:var(--text)}
+  .nav-links a.nav-cta{background:var(--primary);color:var(--bg);padding:10px 20px;border-radius:2px}
+  @media(max-width:760px){.nav-links a:not(.nav-cta){display:none}}
+
+  /* HERO */
+  #hero{padding:clamp(60px,9vw,120px) 0 clamp(50px,7vw,90px)}
+  .hero-eyebrow{margin-bottom:34px}
+  .hero-lede{
+    font-family:'Fraunces',serif;
+    font-weight:400;
+    font-size:clamp(32px,5.4vw,56px);
+    line-height:1.08;
+    letter-spacing:-0.025em;
+    max-width:17ch;
+  }
+  .hero-lede .strong{font-weight:900}
+  .hero-lede .accent{font-style:italic;font-weight:300;color:var(--secondary)}
+  .hero-sub{
+    margin-top:36px;max-width:50ch;font-size:19px;color:#2a4030;
+  }
+  .hero-actions{margin-top:42px;display:flex;align-items:center;gap:30px;flex-wrap:wrap}
+
+  /* HOW IT WORKS */
+  #how-it-works{padding:clamp(70px,9vw,110px) 0;border-top:1px solid rgba(31,36,25,.1)}
+  .how-head{max-width:30ch;margin-bottom:60px}
+  .how-head h2{font-size:clamp(28px,4vw,42px);font-weight:700}
+  .steps{display:grid;grid-template-columns:1fr;gap:0}
+  .step{display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,4vw,54px);padding:36px 0;border-top:1px solid rgba(31,36,25,.14);align-items:start}
+  .step:last-child{border-bottom:1px solid rgba(31,36,25,.14)}
+  .step-num{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(46px,7vw,84px);color:var(--secondary);line-height:.8;letter-spacing:-0.04em}
+  .step h3{font-size:clamp(22px,3vw,29px);font-weight:700;margin-bottom:10px}
+  .step p{max-width:52ch;color:#3a4135}
+
+  /* WHAT WE SHARE */
+  #what-we-share{padding:clamp(70px,9vw,110px) 0;background:var(--primary);color:var(--bg)}
+  #what-we-share .eyebrow{color:var(--accent)}
+  .share-top{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(30px,5vw,64px);align-items:start;margin-bottom:56px}
+  .share-top h2{font-size:clamp(30px,4.4vw,48px);font-weight:700;color:var(--bg)}
+  .share-top p{color:#cfd8cc;max-width:42ch}
+  .share-img{border-radius:3px;overflow:hidden;aspect-ratio:4/3}
+  .share-img img{width:100%;height:100%;object-fit:cover}
+  .share-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(244,239,227,.16);border:1px solid rgba(244,239,227,.16);border-radius:3px;overflow:hidden}
+  .share-cell{background:var(--primary);padding:32px 28px}
+  .share-cell .ic{width:40px;height:40px;border-radius:50%;background:rgba(232,181,58,.16);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+  .share-cell h4{font-size:21px;font-weight:700;color:var(--bg);margin-bottom:8px}
+  .share-cell p{font-size:15px;color:#cfd8cc}
+  @media(max-width:880px){.share-grid{grid-template-columns:repeat(2,1fr)}.share-top{grid-template-columns:1fr}}
+  @media(max-width:520px){.share-grid{grid-template-columns:1fr}}
+
+  /* IMPACT STATS */
+  #impact-stats{padding:clamp(70px,10vw,120px) 0}
+  .stat-line{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(26px,4.2vw,46px);line-height:1.25;letter-spacing:-0.02em;max-width:20ch}
+  .stat-block{display:inline-block;background:var(--primary);color:var(--accent);font-weight:900;padding:.04em .28em;border-radius:3px;letter-spacing:-0.03em}
+  .stat-mid{color:var(--secondary);font-weight:700}
+  .stat-foot{margin-top:30px;font-size:14px;color:#3a4135;letter-spacing:.04em;text-transform:uppercase;font-weight:500}
+
+  /* WORKSHOP LIFE */
+  #workshop-life{position:relative;min-height:90vh;display:flex;align-items:flex-end;
+    background-image:linear-gradient(to top,rgba(31,36,25,.82),rgba(31,36,25,.25) 60%,rgba(31,36,25,.45)),url(/api/pages/aaaPXdQzwL/assets/g2k7ofgw8y5msxst5tngxy9m);
+    background-size:cover;background-position:center;background-attachment:fixed;color:var(--bg)}
+  .wl-inner{padding-block:clamp(50px,7vw,90px)}
+  .wl-inner .eyebrow{color:var(--accent)}
+  .wl-pull{font-family:'Fraunces',serif;font-weight:400;font-size:clamp(28px,4.4vw,52px);line-height:1.12;letter-spacing:-0.02em;max-width:18ch;margin:18px 0 22px}
+  .wl-cap{max-width:48ch;color:#e3e7df;font-size:17px}
+  @media(max-width:760px){#workshop-life{background-attachment:scroll;min-height:70vh}}
+
+  /* TESTIMONIALS */
+  #testimonials{padding:clamp(70px,9vw,110px) 0;background:var(--secondary);color:var(--bg)}
+  #testimonials .eyebrow{color:var(--accent)}
+  .t-head{max-width:24ch;margin-bottom:54px}
+  .t-head h2{font-size:clamp(28px,4vw,44px);font-weight:700;color:var(--bg)}
+  .t-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:24px;align-items:start}
+  .t-card{background:#fbf7ee;color:var(--text);border-radius:3px;padding:30px;display:flex;flex-direction:column;height:100%}
+  .t-card.lead{padding:0;overflow:hidden}
+  .t-card.lead .t-portrait{aspect-ratio:1/1;overflow:hidden}
+  .t-card.lead .t-portrait img{width:100%;height:100%;object-fit:cover}
+  .t-card.lead .t-body{padding:30px}
+  .t-quote{font-family:'Fraunces',serif;font-weight:400;font-style:italic;font-size:20px;line-height:1.35;margin-bottom:22px}
+  .t-card.lead .t-quote{font-size:24px}
+  .t-attr{margin-top:auto;font-size:14px}
+  .t-attr strong{display:block;font-weight:600;font-size:15px}
+  .t-attr span{color:var(--secondary)}
+  @media(max-width:900px){.t-grid{grid-template-columns:1fr}}
+
+  /* WHO ITS FOR */
+  #who-its-for{padding:clamp(70px,9vw,110px) 0}
+  .who-head{max-width:28ch;margin-bottom:54px}
+  .who-head h2{font-size:clamp(28px,4vw,44px);font-weight:700}
+  .who-cols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,48px)}
+  .who-col{padding:38px 34px;border-radius:3px}
+  .who-yes{background:var(--primary);color:var(--bg)}
+  .who-no{background:#e9e0cd;color:var(--text)}
+  .who-col h3{font-family:'Fraunces',serif;font-size:24px;font-weight:700;margin-bottom:22px}
+  .who-yes h3{color:var(--accent)}
+  .who-col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:16px}
+  .who-col li{display:flex;gap:12px;font-size:16px}
+  .who-col li .mark{flex:0 0 auto;font-family:'Fraunces',serif;font-weight:900}
+  .who-yes li{color:#e3e7df}
+  .who-dues{margin-top:46px;text-align:center;max-width:56ch;margin-inline:auto;font-family:'Fraunces',serif;font-size:clamp(20px,2.6vw,26px);font-weight:300;line-height:1.4}
+  .who-dues b{font-weight:700;color:var(--secondary)}
+  @media(max-width:760px){.who-cols{grid-template-columns:1fr}}
+
+  /* FINAL CTA */
+  #final-cta{padding:clamp(80px,11vw,140px) 0;background:var(--accent);color:var(--text)}
+  .fc{text-align:center;max-width:24ch;margin-inline:auto}
+  .fc h2{font-size:clamp(34px,5.6vw,64px);font-weight:900;letter-spacing:-0.03em;line-height:1.02}
+  .fc .btn{margin-top:38px;background:var(--primary);color:var(--bg);font-size:18px;padding:18px 38px}
+  .fc .btn:hover{box-shadow:0 14px 30px rgba(31,36,25,.3)}
+  .fc-risk{margin-top:24px;font-weight:500;font-size:16px}
+  .fc-meta{margin-top:48px;display:flex;gap:40px;justify-content:center;flex-wrap:wrap;border-top:1px solid rgba(31,36,25,.25);padding-top:34px;max-width:none}
+  .fc-meta div{text-align:left}
+  .fc-meta .lbl{font-size:11px;text-transform:uppercase;letter-spacing:.18em;font-weight:600;color:var(--primary);margin-bottom:6px}
+  .fc-meta .val{font-family:'Fraunces',serif;font-size:18px;font-weight:700}
+
+  /* MEMBERSHIP TIERS */
+  #membership{padding:clamp(70px,9vw,110px) 0;border-top:1px solid rgba(31,36,25,.1)}
+  .mem-head{margin-bottom:54px}
+  .mem-head h2{font-size:clamp(28px,4vw,44px);font-weight:700}
+  .mem-head p{margin-top:16px;max-width:52ch;color:#3a4135}
+  .mem-tiers{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,36px);align-items:start}
+  .mem-card{border-radius:4px;padding:clamp(28px,4vw,48px);display:flex;flex-direction:column;gap:20px}
+  .mem-card.working{background:var(--primary);color:var(--bg)}
+  .mem-card.shopping{background:#eef8f2;color:var(--text)}
+  .mem-badge{display:inline-block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.18em;padding:5px 12px;border-radius:2px;width:fit-content}
+  .mem-card.working .mem-badge{background:var(--accent);color:var(--text)}
+  .mem-card.shopping .mem-badge{background:var(--secondary);color:var(--bg)}
+  .mem-card h3{font-family:'Fraunces',serif;font-size:clamp(22px,3vw,32px);font-weight:700;line-height:1.1}
+  .mem-card.working h3{color:var(--bg)}
+  .mem-price{font-family:'Fraunces',serif;font-size:clamp(16px,2vw,22px);font-weight:300;line-height:1.3}
+  .mem-card.working .mem-price{color:#cfd8cc}
+  .mem-card.shopping .mem-price{color:var(--secondary)}
+  .mem-price b{font-weight:700}
+  .mem-perks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+  .mem-perks li{display:flex;gap:10px;font-size:15px;align-items:baseline}
+  .mem-card.working .mem-perks li{color:#e3e7df}
+  .mem-card.shopping .mem-perks li{color:#4a4030}
+  .mk{flex:0 0 auto;font-family:'Fraunces',serif;font-weight:900}
+  .mem-card.working .mk{color:var(--accent)}
+  .mem-card.shopping .mk{color:var(--secondary)}
+  .btn-mem{display:inline-block;text-decoration:none;font-family:'Work Sans',sans-serif;font-weight:600;font-size:15px;padding:14px 26px;border-radius:2px;letter-spacing:.01em;margin-top:8px;transition:transform .25s ease,box-shadow .25s ease;width:fit-content}
+  .btn-mem:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(31,36,25,.22)}
+  .mem-card.working .btn-mem{background:var(--accent);color:var(--text)}
+  .mem-card.shopping .btn-mem{background:var(--primary);color:var(--bg)}
+  @media(max-width:680px){.mem-tiers{grid-template-columns:1fr}}
+
+  /* WHERE TO SHOP */
+  #where-to-shop{padding:clamp(70px,9vw,110px) 0;border-top:1px solid rgba(31,36,25,.1)}
+  .shop-head{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(30px,5vw,64px);align-items:start;margin-bottom:56px}
+  .shop-head h2{font-size:clamp(28px,4vw,44px);font-weight:700}
+  .shop-head p{color:#3a4135;max-width:42ch}
+  .shop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.5vw,28px)}
+  .shop-card{border-radius:3px;padding:30px 26px;display:flex;flex-direction:column;gap:12px;border:1px solid rgba(31,36,25,.12)}
+  .shop-tag{display:inline-block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.18em;padding:4px 10px;border-radius:2px;width:fit-content}
+  .shop-card h3{font-family:'Fraunces',serif;font-size:20px;font-weight:700;line-height:1.15}
+  .shop-card p{font-size:15px;color:#4a4030;flex:1}
+  .shop-card a{font-family:'Work Sans',sans-serif;font-size:14px;font-weight:600;text-decoration:none;color:var(--primary);border-bottom:1px solid var(--primary);padding-bottom:2px;width:fit-content;margin-top:auto}
+  .shop-card a:hover{opacity:.7}
+  @media(max-width:880px){.shop-grid{grid-template-columns:repeat(2,1fr)}.shop-head{grid-template-columns:1fr}}
+  @media(max-width:520px){.shop-grid{grid-template-columns:1fr}}
+
+  /* FOOTER */
+  footer{background:var(--text);color:#cfd0c9;padding:50px 0}
+  .foot-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+  .foot-inner .wordmark{color:var(--bg)}
+  .foot-inner p{font-size:13px}
+
+  /* reveal */
+  .reveal{opacity:1;transform:none}
+  @media(prefers-reduced-motion:no-preference){
+    .js .reveal{opacity:0;transform:translateY(30px);transition:opacity .6s ease-out,transform .6s ease-out}
+    .js .reveal.in{opacity:1;transform:none}
+  }
+</style>
+<style id="htmlpub-breakpoint-visibility">@media (max-width: 767px) { .hp-hide-mobile { display: none !important; } }
+@media (min-width: 768px) and (max-width: 1199px) { .hp-hide-tablet { display: none !important; } }
+@media (min-width: 1200px) { .hp-hide-desktop { display: none !important; } }</style><style>*,*::before,*::after{transition:none!important;animation:none!important}</style></head>
+<body style="">
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="#" class="wordmark" style="">The Reuse Co-Op</a>
+    <nav class="nav-links">
+      <a href="#what-we-share">What we do</a>
+      <a href="#workshop-life">Shop</a>
+      <a href="#membership" class="nav-cta">Join</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section id="hero" style="">
+    <div class="container">
+      <p class="eyebrow hero-eyebrow reveal in" style="">A Member-owned Co-op</p>
+      <h1 class="hero-lede reveal in" style="">
+        <span class="strong" style="">Nothing here is new.</span>&nbsp;<span class="accent" style="">&nbsp;That's the point.</span></h1>
+      <p class="hero-sub reveal in" style="">A neighborhood co-op with two ways to belong. <strong>Working members</strong> get paid to rescue things that local marketplaces can't sell. <strong>Shopping members</strong> support that work with a small monthly fee and get member pricing in return.</p>
+      <div class="hero-actions reveal in" style="">
+        <a href="#membership" class="btn" style="">Become a Member</a>
+        
+      </div>
+      <p class="reveal in" style="margin-top: 20px; font-size: 15px; color: rgb(58, 65, 53);">Just want to shop? <a href="#what-we-share" class="txtlink">See what we carry →</a></p>
+    </div>
+  </section>
+
+  <!-- WHAT WE SHARE -->
+  <section id="what-we-share" style="">
+    <div class="container" style="">
+      <div class="share-top">
+        <div class="reveal in">
+          <p class="eyebrow" style="margin-bottom: 16px;">What we do</p>
+          <h2 style="">Six services.<br>A scalable supply chain for reuse.</h2>
+        </div>
+        <p class="reveal in" style="">There is so much stuff out there that retains real value through multiple life cycles -- wood, metal, textiles -- but rescuing it has real costs that are better covered at scale. What we accept will expand over time as we create the world we want: Where the latent value in existing objects is fully realized.</p>
+      </div>
+      <div class="share-img reveal in" style="margin-bottom: 32px;">
+        <img src="/api/pages/aaaPXdQzwL/assets/fxwmsxdgcsqi2590sbqbebqx" alt="" style="display: block; max-width: 100%; height: auto;">
+      </div>
+      <div class="share-grid reveal in">
+        <div class="share-cell" style="">
+          <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8b53a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline><path d="M9 6l3-3 3 3"></path></svg></div>
+          <h4 style="">Materials Rescue</h4>
+          <p style="">Working members haul and collect items that didn't get claimed through local listings — before the estate cleanout crew sends them to the scrap yard.</p>
+        </div>
+        <div class="share-cell" style="">
+          <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8b53a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg></div>
+          <h4 style="">Sorting and QC</h4>
+          <p style="">Every rescued item gets checked, categorized, and flagged — repairable, rehomeable, or parts. Nothing moves forward until someone's actually looked at it.</p>
+        </div>
+        <div class="share-cell" style="">
+          <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8b53a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="9" height="9" rx="1"></rect><rect x="13" y="7" width="9" height="9" rx="1"></rect><path d="M6.5 7V5a1 1 0 0 1 1-1h9a1 1 0 0 1 1 1v2"></path><line x1="11" y1="11.5" x2="13" y2="11.5"></line></svg></div>
+          <h4 style="">Kitting</h4>
+          <p style="">Orphaned items get grouped into useful sets — the lamp with the shade, fabric scraps with needle and thread, the drill with the bits. Complete kits rehome faster and deliver better value.</p>
+        </div>
+        <div class="share-cell" style="">
+          <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8b53a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h18"></path><path d="M9 21V9"></path></svg></div>
+          <h4 style="">Design Lab</h4>
+          <p style="">Good items don't sell themselves — they need a story. Working members photograph rescued pieces, write listings, and create the marketing that moves inventory.</p>
+        </div>
+        <div class="share-cell" style="">
+          <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8b53a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div>
+          <h4 style="">Preservation</h4>
+          <p style="">Who loses out when our local unsung history is tossed in the trash? We do. Our working members are trained for an eagle eye for things that might not resell, but have deep social value.</p>
+        </div><div class="share-cell" style="">
+          <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8b53a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="1"></rect><path d="M16 8h4l3 5v3h-7V8z"></path><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg></div>
+          <h4 style="">Shipping &amp; Logistics</h4>
+          <p style="">Not everything sells locally, but that doesn't mean it belongs in the bin. Working members pack, label, and ground-ship items to buyers online — expanding the reuse catchment area.</p>
+        </div>
+        
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- IMPACT STATS -->
+  <section id="impact-stats" style="">
+    <div class="container">
+      <p class="eyebrow reveal in" style="margin-bottom: 28px;">The math</p>
+      <p class="stat-line reveal in" style=""><span class="stat-block" style="">XX,XXX lbs</span> of material rescued from scrap and landfill, <span class="stat-block" style="">XXX tons</span> of CO2 emissions avoided, and <span class="stat-mid" style="">XX</span>&nbsp;paid working members making it all possible.
+      </p>
+      <p class="stat-foot reveal in" style="">Measured across the last twelve months</p>
+    </div>
+  </section>
+
+  <!-- WHO BUYS / WHERE TO SHOP (combined) -->
+  <section id="workshop-life">
+    <div class="container wl-inner" style="">
+      <p class="eyebrow reveal in" style="">Who buys here &amp; where to shop</p>
+      <p class="wl-pull reveal in" style="">The goal isn't just to rescue things. It's to expand the market for rescued things.</p>
+      <p class="wl-cap reveal in" style="">These buyers already exist — they just need a reliable source. We serve them through a federated group of storefronts, each curated for a different buyer. Find the one that fits you.<br><br></p>
+      
+      
+      <div class="shop-grid reveal in" style="">
+        <div class="shop-card reveal in" style="border-color: rgba(244, 239, 227, 0.2); background: rgba(31, 36, 25, 0.35);">
+          <span class="shop-tag" style="background: var(--accent); color: var(--text);">In-person</span>
+          <h3 style="color: var(--bg);">The Reuse Shop</h3>
+          <p style="color: rgb(207, 216, 204);">Walk-in retail at the co-op. Furniture, homewares, craft kits, textiles. Member pricing Thu &amp; Sat.</p>
+          <a href="#final-cta" style="color: var(--accent); border-color: var(--accent);">Get directions →</a>
+        </div>
+        <div class="shop-card reveal in" style="border-color: rgba(244, 239, 227, 0.2); background: rgba(31, 36, 25, 0.35);">
+          <span class="shop-tag" style="background: var(--primary); color: var(--bg);">Multi-Faceted</span>
+          <h3 style="color: var(--bg);">The Curated Listing</h3>
+          <p style="color: rgb(207, 216, 204);">Spaces and pieces curated so that every neighbor feels at home with reuse.</p>
+          <a href="#" style="color: var(--accent); border-color: var(--accent);">Browse listings →</a>
+        </div>
+        <div class="shop-card reveal in" style="border-color: rgba(244, 239, 227, 0.2); background: rgba(31, 36, 25, 0.35);">
+          <span class="shop-tag" style="background: var(--secondary); color: var(--bg);">Trade</span>
+          <h3 style="color: var(--bg);">Prop &amp; Trade Access</h3>
+          <p style="color: rgb(207, 216, 204);">Volume access for prop studios, designers, and small businesses. Early haul previews and bulk pricing.</p>
+          <a href="#" style="color: var(--accent); border-color: var(--accent);">Enquire about trade access →</a>
+        </div>
+        <div class="shop-card reveal in" style="border-color: rgba(244, 239, 227, 0.2); background: rgba(31, 36, 25, 0.35);">
+          <span class="shop-tag" style="background: rgba(244, 239, 227, 0.2); color: var(--bg);">Free</span>
+          <h3 style="color: var(--bg);">The Free Store</h3>
+          <p style="color: rgb(207, 216, 204);">No transaction, no means test. If you need it, take it.</p>
+          <a href="#final-cta" style="color: var(--accent); border-color: var(--accent);">Find us →</a>
+        </div>
+        <div class="shop-card reveal in" style="border-color: rgba(244, 239, 227, 0.2); background: rgba(31, 36, 25, 0.35);">
+          <span class="shop-tag" style="background: var(--primary); color: var(--bg);">Online</span>
+          <h3 style="color: var(--bg);">Parts &amp; Materials</h3>
+          <p style="color: rgb(207, 216, 204);">Components, hardware, fabric, and raw materials for makers and builders. Ships or local pickup.</p>
+          <a href="#" style="color: var(--accent); border-color: var(--accent);">Browse parts →</a>
+        </div>
+        <div class="shop-card reveal in" style="border-color: rgba(244, 239, 227, 0.2); background: rgba(31, 36, 25, 0.35);">
+          <span class="shop-tag" style="background: var(--accent); color: var(--text);">Coming soon</span>
+          <h3 style="color: var(--bg);">Institutional Supply</h3>
+          <p style="color: rgb(207, 216, 204);">Desks, shelving, AV equipment, classroom materials... Everything for schools, nonprofits, and community orgs.</p>
+          <a href="#" style="color: var(--accent); border-color: var(--accent);">Join the waitlist →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  
+
+  <!-- MEMBERSHIP TIERS -->
+<section id="membership" style="">
+    <div class="container" style="">
+      <div class="mem-head reveal in">
+        <p class="eyebrow" style="margin-bottom: 16px;">Two ways to be a member</p>
+        <h2 style="">Pick the role that fits your life.</h2>
+        <p style="">Both memberships support the same mission. One asks for your time; the other asks for a small monthly contribution. Either way, you're growing the reuse economy.</p>
+      </div>
+      <div class="mem-tiers" style="">
+        <div class="mem-card working reveal in" style="">
+          <span class="mem-badge">Working Member</span>
+          <h3 style="">Give a few hours. Get a lot back.</h3>
+          <p class="mem-price" style=""><b>Dues waived</b> — your time is the membership.</p>
+          <ul class="mem-perks">
+            <li style=""><span class="mk">→</span>&nbsp;X hours of work/month covers your membership (+ you get paid)</li><li style="" data-htmlpub-settled="1"><span class="mk">→</span>&nbsp;Working Member appreciation events</li>
+            <li style=""><span class="mk">→</span>All other Shopping Member perks</li>
+            
+            
+            
+          </ul>
+          <a href="#final-cta" class="btn-mem" style="">Become a Working Member</a>
+        </div>
+        <div class="mem-card shopping reveal in" style="">
+          <span class="mem-badge" style="">Shopping Member</span>
+          <h3 style="">Support reuse without the shifts.</h3>
+          <p class="mem-price" style=""><b style="">$X–$XX/mo</b> sliding scale — pay what you can.</p>
+          <ul class="mem-perks">
+            <li style=""><span class="mk">→</span> Member pricing on everything</li>
+            
+            <li style=""><span class="mk">→</span> Early notice of sales and special hauls</li>
+            <li style=""><span class="mk">→</span> Vote at member meetings</li>
+            
+          </ul>
+          <a href="#final-cta" class="btn-mem" style="">Become a Shopping Member</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <!-- WHO ITS FOR -->
+  
+
+  <!-- WHERE TO SHOP -->
+  
+
+  <!-- FINAL CTA -->
+  <section id="final-cta" style="">
+    <div class="container" style="">
+      <div class="fc reveal in">
+        <h2 style="">Stop good things from becoming scrap.</h2>
+        
+      </div>
+      <div class="fc-meta reveal in" style="">
+        <div>
+          <div class="lbl" style="">Visit hours</div>
+          <div class="val" style="">Thu 4–8pm · Sat 9am–2pm</div>
+        </div>
+        <div>
+          <div class="lbl" style="">Find us</div>
+          <div class="val" style="">214 Mill Street, The Old Cannery</div>
+        </div>
+        <div>
+          <div class="lbl" style="">Drop a line</div>
+          <div class="val" style=""><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2a424f4646456a5e424f584f5f594f5a5845404f495e0445584d">[email&#160;protected]</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container foot-inner" style="">
+    <a href="#" class="wordmark" style="">The Reuse Co-Op</a>
+    <p>© <span id="yr">2026</span> The Reuse Project — a member-run neighborhood co-op.</p>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  document.documentElement.classList.add('js');
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  (function(){
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var els = document.querySelectorAll('.reveal');
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e,i){
+        if(e.isIntersecting){
+          var t = e.target;
+          setTimeout(function(){ t.classList.add('in'); }, (i%4)*90);
+          io.unobserve(t);
+        }
+      });
+    },{threshold:0.12, rootMargin:'0px 0px -8% 0px'});
+    els.forEach(function(el){ io.observe(el); });
+  })();
+</script>
+
+</body></html>
